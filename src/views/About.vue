@@ -1,8 +1,17 @@
 <template>
-  <div>
-    <h1>About Page</h1>
-    <p>
-     This is the about page where are making a Student Task Manager application
-    </p>
-  </div>
+  <section class="about">
+    <div class="card">
+      <h2>About Student Task Manager</h2>
+
+      <p>
+        Student Task Manager is a simple task management application
+      </p>
+
+
+      <h3>Technologies Used</h3>
+
+      
+    </div>
+  </section>
 </template>
+

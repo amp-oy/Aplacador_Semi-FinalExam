@@ -1,3 +1,29 @@
+<template>
+  <section>
+    <div class="list-header">
+      <h2>My Tasks</h2>
+
+      <p v-if="tasks.length">
+        {{ tasks.length }} task{{ tasks.length !== 1 ? 's' : '' }}
+      </p>
+    </div>
+
+    <div v-if="tasks.length === 0" class="empty">
+      <p>No tasks yet. Add your first task above.</p>
+    </div>
+
+    <div v-else class="task-list">
+      <TaskItem
+        v-for="task in tasks"
+        :key="task.id"
+        :task="task"
+        @toggle-status="handleToggleStatus"
+        @delete-task="handleDeleteTask"
+      />
+    </div>
+  </section>
+</template>
+
 <script setup>
 import TaskItem from './TaskItem.vue'
 
@@ -9,33 +35,16 @@ defineProps({
 })
 
 const emit = defineEmits([
-  'toggle-task',
+  'toggle-status',
   'delete-task'
 ])
 
-function toggleTask(taskId) {
-  emit('toggle-task', taskId)
+function handleToggleStatus(id) {
+  emit('toggle-status', id)
 }
 
-function deleteTask(taskId) {
-  emit('delete-task', taskId)
+function handleDeleteTask(id) {
+  emit('delete-task', id)
 }
 </script>
 
-<template>
-  <section class="task-list">
-    <h2>Task List</h2>
-
-    <p v-if="tasks.length === 0">
-      No tasks available.
-    </p>
-
-    <TaskItem
-      v-for="task in tasks"
-      :key="task.id"
-      :task="task"
-      @toggle-task="toggleTask"
-      @delete-task="deleteTask"
-    />
-  </section>
-</template>

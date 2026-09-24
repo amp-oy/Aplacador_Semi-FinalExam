@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink :to="{ name: 'Task' }">Task</RouterLink>
-       <RouterLink :to="{ name: 'About' }">About</RouterLink>
-      
-    </nav>
-  </div>
-    <br>
+  <div id="app">
+    <header>
+      <h1>Student Task Manager</h1>
+
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/tasks">Tasks</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </header>
+
+    <main>
       <RouterView />
-  
+    </main>
+  </div>
 </template>
 
